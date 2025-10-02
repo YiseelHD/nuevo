@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zona Yisel — Reproductor</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+  {
+    "imports": {}
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dYf6X6e3X6qgk1Y3yqv1eI3qv+e3Z1k9x2f9QWlY5XJq9y1Kf6b1L6Q2Z8Vj7a3g9b2q3c4d5e6f7g8h9i0j==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <main class="player-root">
+    <div class="player-card" role="application" aria-label="Reproductor Zona Yisel">
+      <header class="player-header">
+        <h1 class="station-name">Zona Yisel</h1>
+        <p class="station-sub">Radio en vivo</p>
+      </header>
+
+      <!-- Hero artista grande centrado -->
+      <div class="hero" aria-hidden="false">
+        <img id="heroArt" class="hero-art" src="./imgs/logo.svg" alt="Imagen del artista" />
+        <div id="heroMeta" class="hero-meta" aria-live="polite">
+          <div class="hero-title">Titulo Desconocido...</div>
+          <div class="hero-artist">Artista desconocido...</div>
+          <div class="hero-stats"><span id="hpBitrate">-- kbps</span> • <span id="hpListeners">-- oyentes</span></div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="wave" id="wave"></div>
+
+        <!-- NOW PLAYING: added artist artwork + metadata -->
+        <div class="now-playing" id="nowPlaying" aria-live="polite">
+          <img id="npArt" class="np-art" src="./imgs/logo.svg" alt="Carátula" />
+          <div class="np-meta">
+            <div id="npTitle" class="np-title">Titulo Desconocido...</div>
+            <div id="npSub" class="np-sub">Artista desconocido...</div>
+            <button id="npOpen" class="btn" title="Abrir en Deezer" style="display:none">Abrir</button>
+          </div>
+        </div>
+      </div>
+
+      <audio id="stream" preload="none" crossorigin="anonymous">
+        <!-- Reemplaza el valor de src con la URL de tu streaming -->
+        <source id="stream-src" src="https://cp.sonicpanel.stream/8004/stream" type="audio/mpeg" />
+        Tu navegador no soporta audio en vivo.
+      </audio>
+
+      <div class="controls">
+        <button id="playBtn" class="btn primary" aria-pressed="false" title="Reproducir / Pausar">▶</button>
+
+        <!-- url input removed — configure stream src directly in the HTML source element -->
+
+        <div class="group">
+          <label for="volume" class="visually-hidden">Volumen</label>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
+          <span id="volumePct" class="volume-pct" aria-hidden="true">80%</span>
+        </div>
+
+        <div class="group meta">
+          <span id="status">Detenido</span>
+          <button id="muteBtn" class="btn" title="Silenciar">🔊</button>
+        </div>
+      </div>
+
+      <footer class="player-footer">
+        <small>Fuente: Zona Yisel • Configure la URL del stream editando el atributo src en &lt;source id="stream-src"&gt; dentro de index.html.</small>
+        <nav class="social" aria-label="Redes sociales">
+          <a href="https://facebook.com" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i><span class="visually-hidden">Facebook</span></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="visually-hidden">Instagram</span></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i><span class="visually-hidden">YouTube</span></a>
+          <a href="https://wa.me/1234567890" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="visually-hidden">WhatsApp</span></a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener" title="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i><span class="visually-hidden">TikTok</span></a>
+        </nav>
+      </footer>
+    </div>
+  </main>
+
+  <script src=".js/script.js" type="module"></script>
+</body>
+</html>
